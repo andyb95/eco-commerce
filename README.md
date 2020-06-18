@@ -45,7 +45,7 @@ create table users (
   password text,
   name varChar(25),
   points int,
-)
+);
 ```
 
 Product
@@ -54,9 +54,9 @@ create table products (
   product_id serial primary key,
   name varchar (300),
   price int,
-  img varchar(3000)
+  img varchar(3000),
   description text
-)
+);
 ```
 
 Product Photos
@@ -65,14 +65,14 @@ create table photos (
   photo_id serial primary key,
   product_id int references products(product_id),
   extra_img varchar(3000)
-)
+);
 ```
 
 Cart
 ```SQL
 select u.user_id, p.product_id
 into cart from users u
-join products p on u.user_id = p.product_id
+join products p on u.user_id = p.product_id;
 ```
 
 ## View
@@ -184,7 +184,7 @@ Get 'api/products'
 - Cart (/cart)
 - Dashboard (/dash)
 
-**extra stuff**
+**extra routes**
 - Account (/account)
 - ProductPage (/product)
 - Subscription (/subscription)
