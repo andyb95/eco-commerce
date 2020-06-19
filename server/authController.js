@@ -9,7 +9,7 @@ module.exports = {
     const existingUser = await db.check_user(email)
 
     if (existingUser[0]){
-      return res.status(409).send('User already exists')
+      return res.status(409).send('There is already an account associated with this email')
     } 
 
     const salt = bcrypt.genSaltSync(10)
@@ -27,7 +27,52 @@ module.exports = {
     res.status(200).send(req.session.user)
   },
 
+  login: async(req, res) => {
+    const db = req.app.get('db')
+    const {email, password} = req.body
 
+    const user = await db.check_user(email)
+    if (!user[0]){
+      return res.status(404).send('user does not exist')
+    } else {
+      const authenticated = bcrypt.compareSync(password, user[0].password)
+      if (authenticated) {
+        req.session.user = {
+          user_id: user[0].user_id,
+          email: user[0].email,
+          password: user[0].password,
+          name: user[0].name,
+          address: user[0].address,
+          points: user[0].points
+        }
+        
+        res.status(200).send(req.session.user)
+        console.log(req.session.user)
+      } else {
+          res.status(403).send('incorrect email or password')
+        }
+    }
+  },
+
+  editUser: async(req, res) => {
+    const db = req.app.get('db')
+    const {user_id} = req.params
+    const {email, name, address} = req.body
+
+    const update = await db.update_user([user_id, email, name, address])
+
+    if(update[0]){
+      res.status(200).send(update)
+    } else {
+      res.sendStatus(404)
+    }
+  },
+
+  
+  logout: async(req, res) => {
+    req.session.destroy()
+    res.sendStatus(200)
+  }
 
 
 }

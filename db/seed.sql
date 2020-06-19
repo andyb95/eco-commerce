@@ -7,7 +7,8 @@ create table users (
   user_id serial primary key,
   email varchar(100),
   password text,
-  name varChar(25),
+  name varchar(25),
+  address varchar(250)
   points int,
 );
 
