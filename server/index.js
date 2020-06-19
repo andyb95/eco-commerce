@@ -35,10 +35,10 @@ app.put('/api/product/:product_id', product.editProduct)
 app.delete('/api/product/:product_id', product.deleteProduct)
 app.delete('/api/photo/:photo_id', product.deletePhoto)
 
-//cart
-// app.get('/api/users/:user_id/cart', cart.getCart)
-// app.put('/api/users/:user_id/cart', cart.addItem)
-// app.delete('/api/users/:user_id/cart', cart.removeItem)
+//cart:
+app.get('/api/users/:user_id/cart', cart.getCart)
+app.post('/api/users/:user_id/cart', cart.addItem)
+app.delete('/api/users/:user_id/cart', cart.removeItem)
 
 massive({
   connectionString: CONNECTION_STRING,

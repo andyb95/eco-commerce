@@ -17,8 +17,11 @@ module.exports = {
     const db = req.app.get('db')
 
     const product = await db.add_product(name, price, img, description)
-
-    res.status(200).send(product)
+    if (product[0]){
+      res.status(200).send(product)
+    } else {
+      res.status(500).send("Couldn't Add Product")
+    }
   },
 
   editProduct: async (req, res) => {
