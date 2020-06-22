@@ -57,9 +57,9 @@ module.exports = {
   editUser: async(req, res) => {
     const db = req.app.get('db')
     const {user_id} = req.params
-    const {email, name, address} = req.body
+    const {name, email, password, address} = req.body
 
-    const update = await db.update_user([user_id, email, name, address])
+    const update = await db.update_user([user_id, name, email, password, address])
 
     if(update[0]){
       res.status(200).send(update)
@@ -72,6 +72,7 @@ module.exports = {
   logout: async(req, res) => {
     req.session.destroy()
     res.sendStatus(200)
+    console.log(req.session)
   }
 
 

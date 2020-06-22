@@ -1,16 +1,58 @@
 //state: search
 //methods: handleChange, toggleSearch
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
-export default class Nav extends Component{
+import {updateUser, logout} from './../../redux/userReducer'
+import axios from 'axios'
+
+class Nav extends Component{
   // constructor(props){
   //   super(props)
   // }
 
 
+  logout = () => {
+    axios.delete('auth/logout')
+    .then(res => {
+      this.props.logout(res.data)
+    })
+  }
+
+
   render(){
+    const {name} = this.props.userReducer
     return(
-      <div>Nav.js</div>
+      <div>
+
+        <Link to = '/'>Home</Link>
+
+        <Link to = '/dash'>Products</Link>
+        <Link to = '/cart'>Cart</Link>
+        <Link to = '/user'>Account</Link>        
+
+
+        <input
+          type = 'search'
+        />
+        <button>Search</button>
+    
+        {name ? (
+            <Link to = '/user'>Hello, {name}</Link>        
+          ):(
+            <Link to = '/landing'>Hello, Sign In</Link>
+        )}
+
+        <button onClick = {this.logout}>Logout</button>
+      </div>
     )
   }
 }
+
+function mapStateToProps(state){
+  return state
+}
+ 
+
+export default connect(mapStateToProps, {updateUser, logout})(Nav)
