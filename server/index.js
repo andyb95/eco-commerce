@@ -29,11 +29,11 @@ app.delete('/auth/logout', auth.logout)
 
 //product:
 app.get('/api/products', product.getInventory)
-app.post('/api/product', product.addProduct)
-app.post('/api/photo/:product_id', product.addPhoto)
-app.put('/api/product/:product_id', product.editProduct)
-app.delete('/api/product/:product_id', product.deleteProduct)
-app.delete('/api/photo/:photo_id', product.deletePhoto)
+// app.post('/api/product', product.addProduct)
+// app.post('/api/photo/:product_id', product.addPhoto)
+// app.put('/api/product/:product_id', product.editProduct)
+// app.delete('/api/product/:product_id', product.deleteProduct)
+// app.delete('/api/photo/:photo_id', product.deletePhoto)
 
 //cart:
 app.get('/api/users/:user_id/cart', cart.getCart)

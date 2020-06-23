@@ -1,4 +1,3 @@
-
 const initialState = {
   user_id: '',
   name: '',
