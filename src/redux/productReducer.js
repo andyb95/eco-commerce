@@ -8,11 +8,11 @@ const UPDATE_INVENTORY = "UPDATE_INVENTORY"
 
 
 export function updateInventory(){
-  const inventory = axios.get('/api/products')
+  const inv = axios.get('/api/products')
   .then(res => res.data)
   return {
     type: UPDATE_INVENTORY,
-    payload: inventory
+    payload: inv
   }
 }
 
@@ -20,7 +20,7 @@ export default function (state = initialState, action) {
   const {type, payload} = action
   switch (type){
     case UPDATE_INVENTORY + '_FULFILLED':
-      return {inventory: payload}
+      return {...state, payload}
     default:
       return state
   }

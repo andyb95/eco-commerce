@@ -7,23 +7,32 @@ import {updateInventory} from '../../redux/productReducer'
 
 class Dash extends Component{
 
-  // constructor(props){
-  //   super(props)
-  //   this.state ={
-  //     inventory: []
-  //   }
-  // }
+  constructor(props){
+    super(props)
+    this.state ={
+      inventory: []
+    }
+  }
 
   componentDidMount(){
-    this.props.updateInventory()
-    console.log(this.props.productReducer.inventory)
+    this.getInventory()
+    // this.props.updateInventory()
+  }
+
+  getInventory = () => {
+    axios.get('/api/products')
+    .then(res => {
+      this.setState({inventory: res.data})
+    })
+    .catch(err => console.log(err))
   }
 
   render(){
-    const {product_id, name, price, img, description} = this.props.productReducer.inventory
+    
     return (
-      <div>Dash.js
-        {this.props.productReducer.inventory.map((e) => {
+      <div>
+        {/* {this.props.productReducer.inventory.map((e) => { */}
+        {this.state.inventory.map((e) => {
           return <Product 
             key ={e.product_id}
             product={e}
