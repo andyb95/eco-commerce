@@ -38,7 +38,7 @@ app.post('/api/product', product.addProduct)
 //cart:
 app.get('/api/users/:user_id/cart', cart.getCart)
 app.post('/api/users/:user_id/cart', cart.addItem)
-app.delete('/api/users/:user_id/cart', cart.removeItem)
+app.delete('/api/users/:cart_id/cart', cart.removeItem)
 
 massive({
   connectionString: CONNECTION_STRING,

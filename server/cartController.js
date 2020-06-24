@@ -26,12 +26,11 @@ module.exports = {
   },
 
   removeItem: async (req, res) => {
-    const {user_id} = req.params
-    const {product_id} = req.body
+    const {cart_id} = req.params
     const db = req.app.get('db')
 
     try{
-      await db.remove_from_cart(user_id, product_id)
+      await db.remove_from_cart(cart_id)
       res.status(200).send('Deleted')
     } catch {
       res.status(500).send("Couldn't Delete From Cart")

@@ -1,32 +1,26 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import './Product.css'
+import '../Product/Product.css'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-class Product extends Component {
+class CartProduct extends Component {
 
   constructor(props){
     super(props)
   }
-  // componentDidMount(){
-    
-  // }
 
-  
-  addToCart = () => {
-    const {product_id} = this.props.product
-    const {user_id} = this.props.userReducer
-    axios.post(`/api/users/${user_id}/cart`, {product_id})
-    // .then(this.props.getCart())
+
+  removeCart = () => {
+    const {cart_id} = this.props.product
     
+    axios.delete(`/api/users/${cart_id}/cart`)
+    this.props.getCart()
   }
   
   render(){
     const {product_id, name, price, img} = this.props.product
-    console.log(this.props)
-    // const {addToCart} = props  
     return(
       <div className = 'product-container'>
         <img className = 'dash-img' src = {img} alt={name}/>
@@ -35,13 +29,13 @@ class Product extends Component {
           <h2>${price}</h2>
         </div>
         <div className = 'buy-buttons'>
+          <button className = 'buy-button'>Buy Now</button>
           <button 
             className = 'buy-button'
-            onClick = {() => this.addToCart()}
+            onClick = {() => this.removeCart()}
           >
-            <Link to ='/cart' >Add To Cart</Link>
+            <Link to ='/cart'>Delete</Link>
           </button>
-          <button className = 'buy-button'>Buy Now</button>
           
         </div>
       </div>
@@ -53,4 +47,4 @@ const mapStateToProps = state => {
   return state
 }
 
-export default connect(mapStateToProps)(Product)
+export default connect(mapStateToProps)(CartProduct)

@@ -26,6 +26,10 @@ create table photos (
   extra_img varchar(3000)
 );
 
-select u.user_id, p.product_id
-into cart from users u
-join products p on u.user_id = p.product_id;
+
+create table cart (
+  cart_id serial primary key,
+  user_id int references users(user_id),
+  product_id int references products(product_id), 
+);
+

@@ -1,3 +1,2 @@
 delete from cart
-where user_id = $1 
-and product_id = $2;
+where cart_id = $1;
