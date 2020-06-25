@@ -215,10 +215,10 @@ Get 'api/products'
 
 ## Points
 
-**core = 45**
+**core = 40**
 
 - 3 pages with responsive views on 2 screen sizes; Home, dashboard , and Cart  = 15
-- 2 reducers; user & product = 15
+- UserReducer = 10
 - figure out how to use react hooks on all components = 5
   - start with landing and user info
 - authentication in Landing.js = 10

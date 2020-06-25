@@ -29,7 +29,6 @@ class Nav extends Component{
         <Link to = '/'>Home</Link>
 
         <Link to = '/dash'>Products</Link>
-        <Link to = '/cart'>Cart</Link>
         <Link to = '/user'>Account</Link>        
 
 
@@ -39,12 +38,17 @@ class Nav extends Component{
         <button>Search</button>
     
         {name ? (
+          <div>
             <Link to = '/user'>Hello, {name}</Link>        
+            <button onClick = {this.logout}>
+                <Link to = '/landing'>Logout</Link>
+            </button>
+          </div>
           ):(
             <Link to = '/landing'>Hello, Sign In</Link>
-        )}
+            )}
 
-        <button onClick = {this.logout}>Logout</button>
+          <Link to = '/cart'>Cart</Link>
       </div>
     )
   }
