@@ -77,13 +77,13 @@ join products p on u.user_id = p.product_id;
 
 ## View
 
-<img src="./screenshots/Home.png">
-<img src="./screenshots/HomeResponsive.png">
-<img src="./screenshots/Dashboard.png">
-<img src="./screenshots/ProductPage.png">
-<img src="./screenshots/Account.png">
-<img src="./screenshots/UserInfo.png">
-<img src="./screenshots/ComponentTree.png">
+<img src="./src/screenshots/Home.png">
+<img src="./src/screenshots/HomeResponsive.png">
+<img src="./src/screenshots/Dashboard.png">
+<img src="./src/screenshots/ProductPage.png">
+<img src="./src/screenshots/Account.png">
+<img src="./src/screenshots/UserInfo.png">
+<img src="./src/screenshots/ComponentTree.png">
 
 ## Server
 **dependencies**

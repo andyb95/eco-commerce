@@ -25,7 +25,6 @@ class Product extends Component {
   
   render(){
     const {product_id, name, price, img} = this.props.product
-    console.log(this.props)
     // const {addToCart} = props  
     return(
       <div className = 'product-container'>

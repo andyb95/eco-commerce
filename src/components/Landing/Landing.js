@@ -8,6 +8,8 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import {updateUser} from './../../redux/userReducer'
 
+import './Landing.css'
+
 class Landing extends Component{
 
   constructor(props){
@@ -26,11 +28,11 @@ class Landing extends Component{
   register(e){
     e.preventDefault()
     const {email, password} = this.state
-    debugger
+    
     axios.post('/auth/register', {email, password})
     .then(res => {
       this.props.updateUser(res.data)
-      this.props.history.push('/home')
+      this.props.history.push('/')
     })
     .catch(err => {
       alert("Could not register")
@@ -44,7 +46,7 @@ class Landing extends Component{
     .then(res => {
       this.props.updateUser(res.data)
       // this.setState({user: res.data})
-      this.props.history.push('/home')
+      this.props.history.push('/')
       // console.log(this.state)
     })
     .catch(err => {
@@ -55,7 +57,9 @@ class Landing extends Component{
   render(){
     const {email, password} = this.state
     return(
-      <div>Landing.js
+      <div className = 'landing'> 
+        <h1 className= 'sign-in'>Sign-In</h1>
+        <h2>Email</h2>
         <input 
         type="text"
         placeholder = "email..."
@@ -63,6 +67,7 @@ class Landing extends Component{
         value ={email}
         onChange = {(e)=> this.handleChange(e)}
         />
+        <h2>Password</h2>
         <input 
         type="text"
         placeholder = "password..."
@@ -70,8 +75,10 @@ class Landing extends Component{
         value = {password}
         onChange = {(e) => this.handleChange(e)}
         />
-        <button onClick = {(e) => this.login(e)}>Login</button>
-        <button onClick = {(e) => this.register(e)}>Register</button>
+        <div className ='landing-buttons'>
+          <button className = 'landing-button' onClick = {(e) => this.login(e)}>Login</button>
+          <button className = 'landing-button' onClick = {(e) => this.register(e)}>Register</button>
+        </div>
       </div>
     )
   }

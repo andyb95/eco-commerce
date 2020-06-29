@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|Open+Sans');
+
+.heading {
+  color: #67E596 !important;
+  font-family: 'Anton', sans-serif;
+  font-size: 2em;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 0px;
+}
+
+p {
+  font-family: 'Open Sans', 'Sans-Serif';
+  color: #707070;
+  font-size: 102%;
+}
+
+.slide {
+  display: none;
+  max-width: 900px;
+  text-align: center;
+}
+
+.active {
+  display: block;
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 100px 0px 0px 0px;
+}
+
+.slider-items {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+}
+
+.noButton {
+  display: none;
+}
+
+.button {
+    border-radius: 30px;
+    border: none;
+    background: #317B22;
+    color: #FFFFFF;
+    font-family:'Open Sans', 'Sans-Serif';
+    font-weight: bold;
+    font-size: 105%;
+    text-transform: uppercase;
+    padding: 6px 40px 6px 40px;
+}
+
+.secondButton {
+  border-radius: 30px;
+  border-color: #317B22;
+  background-color: Transparent;
+  border-style: solid;
+  color: #317B22;
+  font-family:'Open Sans', 'Sans-Serif';
+  font-weight: bold;
+  font-size: 105%;
+  text-transform: uppercase;
+  padding: 5px 40px 5px 40px;
+  margin:  0px 0px 0px 10px;
+}
+
+button:hover {
+  text-decoration: none;
+  background-color: #67E0A3;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.secondButton:hover {
+  text-decoration: none;
+  background-color: Transparent;
+  border-color: #67E0A3 ;
+  color: #67E0A3 ;
+}
+
+.slider-text {
+  width: 800px;
+}
+
+.mainSlide {
+  font-size: 3em;
+  letter-spacing: 3px;
+  font-family: 'Anton', sans-serif;
+}
+
+.fa {
+  color: #707070;
+}

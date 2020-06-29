@@ -1,0 +1,148 @@
+.nav{
+  height: 55px;
+  box-sizing: content-box;
+  background-color: #317B22;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 10px;
+}
+
+.nav-button{
+  background-color: #7CF0BD;
+  height: 25px;
+  border-radius: 10px;
+}
+
+.home-button{
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: #317B22;
+  border-width: 1px;
+  height: 55px;
+  border-radius: 5px;
+}
+
+.home-button:hover{
+  border-color: white;
+}
+
+.search-bar{
+  box-sizing: content-box;
+  height: 40px;
+  width: 30vw;
+  border-color: #7CF0BD;
+  border-width: 1px;
+  margin-left: 50px;
+}
+
+.input{
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  height: 100%;
+  width: 80%;
+}
+
+.search-button{
+  background-color: #7CF0BD;
+  height: 36px;
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.search-icon{
+  height: 15px;
+  width: 15px;
+}
+
+.hello{
+  padding: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #317B22;
+  height: 45px;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 0px;
+  border-radius: 5px;
+}
+
+.hello:hover{
+  border-color: white;
+}
+
+.link{
+  text-decoration: none;
+  color: white;
+  position: absolute; 
+  top: 5px;
+  font-weight: bold
+}
+
+.logout{
+  position: absolute;
+  left: 800px;
+}
+
+/* .cart-button{
+  background-color:#7CF0BD ;
+  height: 50px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  
+} */
+
+.cart-img{
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  right: 25px;
+  top: 10px;
+  padding: 7.5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #317B22;
+  border-radius: 5px;
+}
+
+.cart-img:hover{
+  border-color: white;
+}
+
+@media (max-width: 700px){
+  .nav{
+    height: 110px;
+    flex-direction: row;
+    justify-content: left;
+  }
+
+  .home-button{
+    position: absolute;
+    top: 0px;
+  }
+
+  .search-bar{
+    position: absolute;
+    bottom: 15px;
+    width: 90vw;
+  }
+
+  .hello{
+    position: absolute;
+    left: 275px;
+    top: 7px;
+  }
+
+  .cart-img{
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 7px;
+  }
+}

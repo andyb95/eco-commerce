@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
+import {Link} from 'react-router-dom'
 
-import {updateUser} from './../../redux/userReducer'
+import {updateUser, logout} from './../../redux/userReducer'
 import axios from 'axios'
+import './UserInfo.css'
 
 class UserInfo extends Component{
   constructor(props){
@@ -27,7 +29,8 @@ class UserInfo extends Component{
     })
   }
 
-  update = () => {
+  update = (e) => {
+    e.preventDefault()
     const {user_id, name, email, password, address} = this.state
     console.log(user_id, name, email, password, address)
     if (user_id){
@@ -42,54 +45,71 @@ class UserInfo extends Component{
     this.toggleEdit()
   }
 
+  logout = () => {
+    axios.delete('auth/logout')
+    .then(res => {
+      this.props.logout(res.data)
+    })
+  }
+
   render(){
     const {name, email, password, address} = this.state
     return (
-      <div>
-        <h1>Info & Security</h1>
+      <div className = 'user-info'>
+        <h1 className = 'i-s'>Info & Security</h1>
         {!this.state.isEditing ? (
-          <div>
-            <div>Name: {name}</div>
-            <div>Email: {email}</div>
-            <div>Password: {password}</div>
-            <div>Address: {address}</div>
+          <div className = 'info-container'>
+            <h2 className = 'sub-t'>Name: </h2>
+            <div>{name}</div>
+            <h2 className = 'sub-t'>Email: </h2>
+            <div>{email}</div>
+            <h2 className = 'sub-t'>Password: </h2>
+            <div>{password}</div>
+            <h2 className = 'sub-t'>Address: </h2>
+            <div>{address}</div>
             <button onClick ={this.toggleEdit}>Update</button>
+            <Link to = '/landing'>
+              <button 
+                className= 'nav-button logout'
+                onClick = {this.logout}>Logout
+              </button>
+            </Link>  
           </div>
         ):(
-          <div>
-            <div>Name:
+          <div className = 'info-container'>
+            <h2 className = 'sub-t'>Name:
               <input 
               type="text"
               name="name"
               value={name}
               onChange= {(e) => this.handleChange(e)}
               />
-            </div>
-            <div>Email:
+            </h2>
+            <h2 className = 'sub-t'>Email:
               <input 
               type="text"
               name="email"
               value={email}
               onChange= {(e) => this.handleChange(e)}
               />
-            </div>
-            <div>Password:
+            </h2>
+            <h2 className = 'sub-t'>Password:
               <input 
               type="text"
               name="password"
               value={password}
               onChange= {(e) => this.handleChange(e)}
               />
-            </div>
-            <div>Address:
+            </h2>
+            <h2 className = 'sub-t'>Address:
               <input 
               type="text"
               name="address"
               value={address}
               onChange= {(e) => this.handleChange(e)}
               />      
-            </div>
-            <button onClick = {this.update}>Save Changes</button>
+            </h2>
+            <button className = 'button' onClick = {this.update}>Save Changes</button>
           </div>
         )}
       </div>
@@ -101,4 +121,4 @@ function mapStateToProps (state){
   return state
 }
 
-export default connect(mapStateToProps, {updateUser})(UserInfo)
+export default connect(mapStateToProps, {updateUser, logout})(UserInfo)

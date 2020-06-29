@@ -1,13 +1,14 @@
-import React, {Component} from 'react'
+import React from 'react'
+import Carousel from './Carousel/Carousel'
+import './Home.css'
 
-export default class Home extends Component{
-  constructor(){
-    super()
-  }
+export default function Home (){
+  
+  
+  return(
+    <div>Home.js
+      <Carousel />
+    </div>
+  )
 
-  render(){
-    return (
-      <div>Home.js</div>
-    )
-  }
 }

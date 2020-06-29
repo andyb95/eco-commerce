@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import Product from '../Product/Product'
+import {Link} from 'react-router-dom'
 import CartProduct from '../CartProduct/CartProduct'
 
 class Cart extends Component{
@@ -53,7 +53,9 @@ class Cart extends Component{
               // addToCart = {this.addToCart}
               />
             })}
-            <button>Checkout</button>
+            <button>
+              <Link to = "/checkout">Checkout</Link>
+            </button>
           </div>
         )}
       

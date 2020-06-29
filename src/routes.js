@@ -5,6 +5,7 @@ import Landing from './components/Landing/Landing'
 import UserInfo from './components/UserInfo/UserInfo'
 import Cart from './components/Cart/Cart'
 import Dash from './components/Dash/Dash'
+import Checkout from './components/Checkout/Checkout'
 
 export default (
   <Switch>
@@ -13,5 +14,6 @@ export default (
     <Route path = "/user" component = {UserInfo}/>
     <Route path = "/cart" component = {Cart}/>
     <Route path = "/dash" component = {Dash}/>
+    <Route path = '/checkout' component = {Checkout}/>
   </Switch>
 )

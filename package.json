@@ -14,19 +14,25 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "massive": "^6.4.0",
     "next": "^9.4.4",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-stripe-checkout": "^2.6.3",
+    "react-toastify": "^6.0.6",
     "redux": "^4.0.5",
     "redux-promise-middleware": "^6.1.2",
-    "stripe": "^8.66.0"
+    "stripe": "^8.66.0",
+    "styled-components": "^5.1.1",
+    "uuid": "^8.2.0"
   },
   "scripts": {
     "dev": "next",
@@ -49,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+    "resolutions": {
+      "styled-components": "^5"
+    }
 }
