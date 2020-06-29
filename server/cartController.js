@@ -35,6 +35,18 @@ module.exports = {
     } catch {
       res.status(500).send("Couldn't Delete From Cart")
     }
+  },
+
+  total: async(req, res) =>{
+    const {user_id} = req.params
+    const db = req.app.get('db')
+
+    try{
+      await db.get_price(user_id)
+      res.status(200).send(res.data)
+    } catch{
+      res.status(500).send("Didn't get total")
+    }
   }
 
 }

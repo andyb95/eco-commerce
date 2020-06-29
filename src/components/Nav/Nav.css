@@ -83,21 +83,6 @@
   font-weight: bold
 }
 
-.logout{
-  position: absolute;
-  left: 800px;
-}
-
-/* .cart-button{
-  background-color:#7CF0BD ;
-  height: 50px;
-  width: 100px;
-  display: flex;
-  justify-content: center;
-  border-radius: 10px;
-  
-} */
-
 .cart-img{
   height: 40px;
   width: 40px;

@@ -3,6 +3,8 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import CartProduct from '../CartProduct/CartProduct'
+import Checkout from '../Checkout/Checkout'
+import './Cart.css'
 
 class Cart extends Component{
   constructor(props){
@@ -40,11 +42,10 @@ class Cart extends Component{
   render(){
     return (
       <div>
-        <h1>Cart</h1>
         {!this.state.cart[0] ? (
           <h1>Fill your Cart and help save the Earth.</h1>
         ):(
-          <div>
+          <div className = 'cart'>
             {this.state.cart.map((e) => {
               return <CartProduct
               key = {e.cart_id}
@@ -53,8 +54,8 @@ class Cart extends Component{
               // addToCart = {this.addToCart}
               />
             })}
-            <button>
-              <Link to = "/checkout">Checkout</Link>
+            <button className = 'checkout-button'>
+              <Link className = 'to-checkout' to = "/checkout">Checkout</Link>
             </button>
           </div>
         )}

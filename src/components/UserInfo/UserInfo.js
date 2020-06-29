@@ -43,6 +43,7 @@ class UserInfo extends Component{
       })
     } 
     this.toggleEdit()
+    console.log(this.props.userReducer.name)
   }
 
   logout = () => {
@@ -60,25 +61,30 @@ class UserInfo extends Component{
         {!this.state.isEditing ? (
           <div className = 'info-container'>
             <h2 className = 'sub-t'>Name: </h2>
-            <div>{name}</div>
+            <div className = 'info'>{name}</div>
             <h2 className = 'sub-t'>Email: </h2>
-            <div>{email}</div>
+            <div className = 'info'>{email}</div>
             <h2 className = 'sub-t'>Password: </h2>
-            <div>{password}</div>
+            <div className = 'info'>{password}</div>
             <h2 className = 'sub-t'>Address: </h2>
-            <div>{address}</div>
-            <button onClick ={this.toggleEdit}>Update</button>
-            <Link to = '/landing'>
+            <div className = 'info'>{address}</div>
+            <div className = 'info-buttons'>
               <button 
-                className= 'nav-button logout'
-                onClick = {this.logout}>Logout
-              </button>
-            </Link>  
+                className= 'info-button'
+                onClick ={this.toggleEdit}>Edit</button>
+              <Link to = '/landing'>
+                <button 
+                  className= 'info-button'
+                  onClick = {this.logout}>Logout
+                </button>
+              </Link>  
+            </div>
           </div>
         ):(
           <div className = 'info-container'>
             <h2 className = 'sub-t'>Name:
-              <input 
+              <input
+              className = 'info-input' 
               type="text"
               name="name"
               value={name}
@@ -86,7 +92,8 @@ class UserInfo extends Component{
               />
             </h2>
             <h2 className = 'sub-t'>Email:
-              <input 
+              <input
+              className = 'info-input' 
               type="text"
               name="email"
               value={email}
@@ -94,7 +101,8 @@ class UserInfo extends Component{
               />
             </h2>
             <h2 className = 'sub-t'>Password:
-              <input 
+              <input
+              className = 'info-input' 
               type="text"
               name="password"
               value={password}
@@ -102,14 +110,17 @@ class UserInfo extends Component{
               />
             </h2>
             <h2 className = 'sub-t'>Address:
-              <input 
+              <input
+              className = 'info-input' 
               type="text"
               name="address"
               value={address}
               onChange= {(e) => this.handleChange(e)}
               />      
             </h2>
-            <button className = 'button' onClick = {this.update}>Save Changes</button>
+            <div className = 'info-buttons'>
+              <button className = 'info-button' onClick = {this.update}>Update</button>
+            </div>
           </div>
         )}
       </div>

@@ -1,5 +1,5 @@
 .user-info{
-  height: 300px;
+  /* height: 300px; */
   width: 300px;
   box-sizing: content-box;
   border-style: solid;
@@ -22,6 +22,31 @@
 
 .sub-t{
   margin: 2.5px;
+}
+
+.info{
+  font-size: large;
+  position: relative;
+  left: 10px;
+  word-wrap: break-word;
+}
+
+.info-input{
+  width: 300px;
+}
+
+.info-buttons{
+  display: flex;
+  justify-content: space-around;
+  margin: 30px;
+  margin-bottom: 0px;
+}
+
+.info-button{
+  height: 30px;
+  width: 80px;
+  border-radius: 5px;
+  color: white;
 }
 
 

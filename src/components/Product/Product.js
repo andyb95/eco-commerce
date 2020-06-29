@@ -38,7 +38,7 @@ class Product extends Component {
             className = 'buy-button'
             onClick = {() => this.addToCart()}
           >
-            <Link to ='/cart' >Add To Cart</Link>
+            <Link className = 'add-cart' to ='/cart' >Add To Cart</Link>
           </button>
           <button className = 'buy-button'>Buy Now</button>
           

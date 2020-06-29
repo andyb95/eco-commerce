@@ -1,0 +1,23 @@
+h1{
+  text-align: center;
+}
+
+.cart{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.checkout-button{
+  height: 50px;
+  width: 100px;
+  border-radius: 5px;
+  margin: 0 auto;
+  
+}
+
+.to-checkout{
+  text-decoration: none;
+  color: white;
+}

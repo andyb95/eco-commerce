@@ -41,6 +41,7 @@ app.post('/api/product', product.addProduct)
 
 //cart:
 app.get('/api/users/:user_id/cart', cart.getCart)
+app.get('/api/users/:user_id/total', cart.total)
 app.post('/api/users/:user_id/cart', cart.addItem)
 app.delete('/api/users/:cart_id/cart', cart.removeItem)
 

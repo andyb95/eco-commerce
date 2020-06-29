@@ -34,7 +34,7 @@ class CartProduct extends Component {
             className = 'buy-button'
             onClick = {() => this.removeCart()}
           >
-            <Link to ='/cart'>Delete</Link>
+            <Link className = 'delete-item' to ='/cart'>Delete</Link>
           </button>
           
         </div>
