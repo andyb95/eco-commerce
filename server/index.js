@@ -34,6 +34,8 @@ app.delete('/auth/logout', auth.logout)
 //product:
 app.get('/api/products', product.getInventory)
 app.post('/api/product', product.addProduct)
+app.get('/api/products/:category', product.getCategory)
+app.get('/api/products/:name', product.getName)
 // app.post('/api/photo/:product_id', product.addPhoto)
 // app.put('/api/product/:product_id', product.editProduct)
 // app.delete('/api/product/:product_id', product.deleteProduct)

@@ -11,17 +11,21 @@ class Slide extends Component {
   render() {
     return(
       <section>
-      {
-        this.state.landing.map((s, index) =>
-          <div className={
-            index === this.props.activeIndex ? 'active' : 'slide'}
-            key={index}>
-              <h1 className={index === 0 ? 'mainSlide heading' : 'slider-item heading'}>{s.title}</h1>
-              <p>{s.description}</p>
-              <Link to='/'><button className='button'>{s.buttons}</button></Link>
-              <button className={index === 0 ? 'secondButton' : 'noButton'} onClick={this.props.goToNextSlide}>{s.buttons2}</button>
-          </div>
-        ) }
+      {this.state.landing.map((s, index) =>
+        <div className={
+          index === this.props.activeIndex ? 'active' : 'slide'}
+          key={index}>
+            <img 
+              className = 'background-img'
+              src = {s.img}
+              alt = 'background'
+            />
+            <h1 className={index === 0 ? 'mainSlide heading' : 'slider-item heading'}>{s.title}</h1>
+            <p>{s.description}</p>
+            <Link to='/dash'><button className='button'>{s.buttons}</button></Link>
+            
+        </div>
+        )}
         </section>
     )
   }

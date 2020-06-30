@@ -4,7 +4,11 @@ class LeftArrow extends Component {
   render() {
     return(
       <div >
-        <button className='backArrow' onClick={this.props.goToPrevSlide}>Back</button>
+          <img className='backArrow left' 
+          src = 'https://alexoliveira.me/Hawaii/images/chevron-left.png' 
+          alt = 'left arrow'
+          onClick={this.props.goToPrevSlide}
+          />
         <i className='fa fa-angle-left fa-3x' aria-hidden='true'></i>
       </div>
     )

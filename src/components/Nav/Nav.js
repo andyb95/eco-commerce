@@ -38,8 +38,6 @@ class Nav extends Component{
             />
         </Link>
 
-        <Link to = '/dash'>Products</Link>
-
         <div className = 'search-bar'>
          <input
             className = 'input'

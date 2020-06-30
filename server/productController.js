@@ -1,5 +1,5 @@
 module.exports = {
-
+  
   getInventory: async(req, res) => {
     const db = req.app.get('db')
     
@@ -9,6 +9,30 @@ module.exports = {
     } catch (err) {
       console.log(err)
       res.status(500).send("Couldn't get inventory")
+    }
+  },
+  
+  getCategory: async(req, res) => {
+    const {category} = req.params
+    const db = req.app.get('db')
+  
+    try{
+      const products = await db.get_product_by_category(category)
+      res.status(200).send(products)
+    } catch {
+      res.status(404).send("Couldn't find products")
+    }
+  },
+  
+  getName: async(req, res) => {
+    const {name} = req.params
+    const db = req.app.get('db')
+  
+    try{
+      const product = await db.get_product_by_search(name)
+      res.status(200).send(product)
+    } catch {
+      res.status(404).send("Couldn't find products")
     }
   },
 
@@ -73,6 +97,7 @@ module.exports = {
       res.status(404).send("Couldn't delete")
     }
   },
+
 
 
 }

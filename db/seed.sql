@@ -18,6 +18,7 @@ create table products (
   price int,
   img varchar(3000),
   description text
+  category text
 );
 
 create table photos (
