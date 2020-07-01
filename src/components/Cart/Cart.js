@@ -1,22 +1,29 @@
 import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {toast} from 'react-toastify'
+import StripeCheckout from 'react-stripe-checkout'
 import CartProduct from '../CartProduct/CartProduct'
-import Checkout from '../Checkout/Checkout'
+
+import "react-toastify/dist/ReactToastify.css"
 import './Cart.css'
+
+toast.configure()
 
 class Cart extends Component{
   constructor(props){
     super(props)
     this.state={
-      cart: []
+      cart: [],
+      total: []
     }
   }
 
-  componentWillMount(){
+  componentDidMount(){
     this.getCart()
-    console.log(this.state.cart)
+    this.getTotal()
   }
 
   getCart = () => {
@@ -28,38 +35,59 @@ class Cart extends Component{
     .catch(err => console.log(err))
   }
   
+  getTotal = () => {
+    const {user_id} = this.props.userReducer
+    axios.get(`/api/users/${user_id}/total`)
+    .then(res => {
+      this.setState({total: res.data[0].sum})
+      console.log(this.state.total)
+    })
+    .catch(err => console.log(err))
+  }
 
-  
-  // addToCart = (product_id) => {
-  //   const {user_id} = this.props.userReducer
-  //   const product = axios.post(`/api/users/${user_id}/cart`, {product_id})
-  //   .then(res => {
-  //     this.setState({...this.state.cart, product})
-  //   })
-  //   this.getCart()
-  // }
+  handleToken = async(token, addresses) => {
+    const {cart} = this.state.cart
+    const {price} = this.state.total
+    const response = await axios.post(
+      "https://ry7v05l6on.sse.codesandbox.io/checkout",
+      { token, cart, price }
+    );
+    const { status } = response.data;
+    console.log("Response:", response.data);
+    if (status === "success") {
+      toast("Success! Check email for details", { type: "success" });
+    } else {
+      toast("Something went wrong", { type: "error" });
+    }
+  }
 
   render(){
+
     return (
-      <div>
+      <div className = 'cart'>
         {!this.state.cart[0] ? (
           <h1>Fill your Cart and help save the Earth.</h1>
         ):(
-          <div className = 'cart'>
+          <div>
             {this.state.cart.map((e) => {
               return <CartProduct
               key = {e.cart_id}
               product = {e}
               getCart = {this.getCart}
-              // addToCart = {this.addToCart}
+              getTotal = {this.getTotal}
               />
             })}
-            <button className = 'checkout-button'>
-              <Link className = 'to-checkout' to = "/checkout">Checkout</Link>
-            </button>
+          <h1>Total: {this.state.total}</h1>
+          <Link to ='/checkout'>Checkout</Link>
+          {/* <StripeCheckout
+            stripeKey="pk_test_4TbuO6qAW2XPuce1Q6ywrGP200NrDZ2233"
+            token={this.handleToken}
+            amount={this.state.total * 100}
+            billingAddress 
+            shippingAddress = {this.props.userReducer.address}
+            /> */}
           </div>
         )}
-      
       </div>
     )
   }

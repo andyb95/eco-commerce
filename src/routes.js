@@ -5,7 +5,9 @@ import Landing from './components/Landing/Landing'
 import UserInfo from './components/UserInfo/UserInfo'
 import Cart from './components/Cart/Cart'
 import Dash from './components/Dash/Dash'
-import Checkout from './components/Checkout/Checkout'
+import Checkout from './components/Stripe/src/components/Checkout'
+import Success from './components/Stripe/src/components/Success'
+import Canceled from './components/Stripe/src/components/Canceled'
 
 export default (
   <Switch>
@@ -14,6 +16,15 @@ export default (
     <Route path = "/user" component = {UserInfo}/>
     <Route path = "/cart" component = {Cart}/>
     <Route path = "/dash" component = {Dash}/>
-    <Route path = '/checkout' component = {Checkout}/>
+    <Route path = '/checkout' >
+      < Checkout/>
+    </Route>
+    <Route path = '/success' >
+      < Success/>
+    </Route>
+    <Route path = '/canceled'>
+      < Canceled/>
+    </Route>
+    
   </Switch>
 )

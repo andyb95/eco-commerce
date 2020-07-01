@@ -54,6 +54,12 @@ module.exports = {
     }
   },
 
+  getUser: (req, res) => {
+    if (req && req.session && req.session.user){
+      return res.status(200).send(req.session.user)
+    }
+  },
+
   editUser: async(req, res) => {
     const db = req.app.get('db')
     const {user_id} = req.params

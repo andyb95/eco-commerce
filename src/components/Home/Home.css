@@ -3,6 +3,7 @@
 .home{
   width: 100vw;
   position: relative;
+  
 }
 
 
@@ -32,7 +33,7 @@ p {
 
 .active {
   width: 100%;
-  height: 500px;
+  height: 700px;
   display: block;
   position: relative;
   background: linear-gradient(to bottom, transparent 0%, white 100%);
@@ -44,7 +45,7 @@ p {
   align-content: center;
   align-items: center;
   text-align: center;
-  height: 500px;
+  height: 700px;
   width: 100%;
 }
 
@@ -137,11 +138,38 @@ button:focus {
 
 .background-img{
   z-index: -1;
-  height: 500px;
+  height: 700px;
   width: 100%;
   position: absolute;
   top: 0px;
   left: 0px;
   right: 0px;
   
+}
+
+.home-boxes{
+  box-sizing: content-box;
+  position: absolute;
+  top: 250px;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.home-box{
+  box-sizing: content-box;
+  background-color: rgb(237, 237, 237);
+  height: 400px;
+  margin: 10px;
+  box-shadow: 5px 7.5px rgb(183, 182, 182);
+  border-radius: 2.5px;
+}
+
+.sm{
+  width: 30vw;
+}
+
+.lg{
+  width: 64vw;
 }

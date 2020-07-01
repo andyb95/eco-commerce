@@ -4,8 +4,9 @@
 }
 
 .body{
+  z-index: -2;
   box-sizing: content-box;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   /* background-color: #C6FBD9; */
   position: absolute;

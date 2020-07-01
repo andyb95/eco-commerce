@@ -42,9 +42,10 @@ module.exports = {
     const db = req.app.get('db')
 
     try{
-      await db.get_price(user_id)
-      res.status(200).send(res.data)
-    } catch{
+      const total = await db.get_price(user_id)
+      res.status(200).send(total)
+    } 
+    catch{
       res.status(500).send("Didn't get total")
     }
   }

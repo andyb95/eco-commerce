@@ -8,17 +8,23 @@ create table users (
   email varchar(100),
   password text,
   name varchar(25),
-  address varchar(250)
-  points int,
+  address varchar(250),
+  points int
 );
 
 create table products (
   product_id serial primary key,
   name varchar (300),
-  price int,
+  price money,
   img varchar(3000),
-  description text
+  description text,
   category text
+);
+
+create table cart (
+  cart_id serial primary key,
+  user_id int references users(user_id),
+  product_id int references products(product_id)
 );
 
 create table photos (
@@ -28,9 +34,4 @@ create table photos (
 );
 
 
-create table cart (
-  cart_id serial primary key,
-  user_id int references users(user_id),
-  product_id int references products(product_id), 
-);
 

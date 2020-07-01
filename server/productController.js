@@ -37,10 +37,10 @@ module.exports = {
   },
 
   addProduct: async (req, res) => {
-    const {name, price, img, description} = req.body
+    const {name, price, img, description, category} = req.body
     const db = req.app.get('db')
 
-    const product = await db.add_product(name, price, img, description)
+    const product = await db.add_product(name, price, img, description, category)
     if (product[0]){
       res.status(200).send(product)
     } else {
@@ -50,10 +50,10 @@ module.exports = {
 
   editProduct: async (req, res) => {
     const {product_id} = req.params
-    const {name, price, img, description} = req.body
+    const {name, price, img, description, category} = req.body
     const db = req.app.get('db')
 
-    const update = await db.update_product([product_id, name, price, img, description])
+    const update = await db.update_product([product_id, name, price, img, description, category])
     if (update[0]){
       res.status(200).send(update)    
     } else {

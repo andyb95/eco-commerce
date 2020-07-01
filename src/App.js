@@ -1,9 +1,19 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 import Nav from './components/Nav/Nav'
 import routes from './routes'
+import {connect} from 'react-redux'
+import axios from 'axios'
+import {updateUser} from './redux/userReducer'
 import './App.css';
 
-function App() {
+function App(props) {
+  useEffect(() => {
+    axios.get('/auth/getUser')
+    .then(res => {
+      props.updateUser(res.data)
+    })
+    .catch(err => console.log(err))
+  })
   return (
     <div className="App">
       <Nav />
@@ -14,4 +24,6 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = reduxState => reduxState
+
+export default connect(mapStateToProps, {updateUser})(App);

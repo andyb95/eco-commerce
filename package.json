@@ -30,7 +30,7 @@
     "react-toastify": "^6.0.6",
     "redux": "^4.0.5",
     "redux-promise-middleware": "^6.1.2",
-    "stripe": "^8.66.0",
+    "stripe": "^8.67.0",
     "styled-components": "^5.1.1",
     "uuid": "^8.2.0"
   },
@@ -56,7 +56,7 @@
       "last 1 safari version"
     ]
   },
-    "resolutions": {
-      "styled-components": "^5"
-    }
+  "resolutions": {
+    "styled-components": "^5"
+  }
 }
