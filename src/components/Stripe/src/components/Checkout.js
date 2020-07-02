@@ -1,54 +1,83 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import {Elements, CardElement, useStripe, useElements} from '@stripe/react-stripe-js'
+import {connect} from 'react-redux'
 import axios from 'axios'
+import {Redirect} from 'react-router-dom'
 
 // import '../css/global.css'
 // import '../css/normalize.css'
 
-const CheckoutForm = () => {
-  const stripe = useStripe()
-  const elements = useElements()
+class Checkout extends Component{
 
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    const {error, paymentMethod} = await stripe.createPaymentMethod({
-      type: 'card',
-      card: elements.getElement(CardElement)
-    })
-
-    if (!error){
-      const {id} = paymentMethod
-
-      try {
-        const {data} = await axios.post('/api/charge', {id, amount: 1})
-        console.log(data)
-      } catch (error){
-        console.log(error)
-      }
+  constructor(props){
+    super(props)
+    this.state={
+      redirecting: false
     }
   }
 
-  return (
-    <form onSubmit = {handleSubmit} style = {{maxWidth: '400px', margin: '0 auto'}}>
-      <h2>price: </h2>
-      <CardElement />
-      <button type = 'submit' disabled = {!stripe}>
-        Pay
-      </button>
-    </form>
-  )
+  CheckoutForm = () => {
+    const stripe = useStripe()
+    const elements = useElements()
+
+    
+    
+    const handleSubmit = async (event) => {
+      event.preventDefault()
+      const user = await axios.get('/auth/getUser')
+      const amount = await axios.get(`/api/users/${user.data.user_id}/total`)
+      const {error, paymentMethod} = await stripe.createPaymentMethod({
+        type: 'card',
+        card: elements.getElement(CardElement)
+      })
+
+      if (!error){
+
+        const {id} = paymentMethod
+        try {
+          console.log((amount.data[0].sum.replace(/[$,]+/g,"")*100).toFixed(0))
+          const {data} = await axios.post(`/pay/${id}/${(amount.data[0].sum.replace(/[$,]+/g,"")*100).toFixed(0)}`)
+          this.setState({redirecting: true})          
+          
+        } catch (error){
+          console.log(error)
+        }
+      }
+    }
+
+    return (
+      <form onSubmit = {handleSubmit} style = {{maxWidth: '400px', margin: '0 auto'}}>
+        <h2>price: </h2>
+        <CardElement />
+        <button type = 'submit' disabled = {!stripe}>
+          Pay
+        </button>
+      </form>
+    )
+  }
+
+  
+  render(){
+    const CheckoutForm = this.CheckoutForm
+    const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+    return(
+      <>
+      {this.state.redirecting && (<Redirect to = 'success'/>)}
+      <Elements stripe = {stripePromise}>
+        <CheckoutForm/>
+      </Elements>
+      </>
+    )  
+  }
+  
 }
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
-
-const Checkout = () => {
-  return <Elements stripe = {stripePromise}>
-    <CheckoutForm/>
-  </Elements>
+function mapStateToProps(state){
+  return state
 }
 
-export default Checkout
+export default connect(mapStateToProps)(Checkout)
 
 
 

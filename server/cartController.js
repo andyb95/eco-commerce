@@ -1,4 +1,8 @@
+
+
 module.exports = {
+
+  
 
   getCart: async (req, res) => {
     const {user_id} = req.params
@@ -47,6 +51,27 @@ module.exports = {
     } 
     catch{
       res.status(500).send("Didn't get total")
+    }
+  },
+
+  charge: async (req, res, stripe) => {
+    const { id, amount } = req.body
+
+
+    try {
+      const payment = await stripe.paymentIntents.create({
+        amount,
+        currency: 'USD',
+        description: 'cart',
+        payment_method: id,
+        confirm: true
+      })
+      console.log(payment)
+      return res.status(200).json({
+        confirm: 'abc123'
+      })
+    } catch (error) {
+      res.status(404).send("Couldn't charge")
     }
   }
 

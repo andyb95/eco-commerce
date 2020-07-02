@@ -33,30 +33,34 @@ const calculateOrderAmount = items => {
   return 1;
 };
 
-app.post("/pay", async (req, res) => {
-  const { paymentMethodId, paymentIntentId, items, currency, useStripeSdk } = req.body;
-
-  const orderAmount = calculateOrderAmount(items);
-
+app.post("/pay/:id/:amount", async (req, res) => {
+  
+  const { id, amount
+    // , paymentIntentId, items, currency, useStripeSdk 
+  } = req.params;
+  // const orderAmount = calculateOrderAmount(items);
+  
   try {
     let intent;
-    if (paymentMethodId) {
+    if (id) {
       // Create new PaymentIntent with a PaymentMethod ID from the client.
       intent = await stripe.paymentIntents.create({
-        amount: orderAmount,
-        currency: currency,
-        payment_method: paymentMethodId,
+        amount: amount,
+        currency: 'usd',
+        payment_method: id,
         confirmation_method: "manual",
         confirm: true,
         // If a mobile client passes `useStripeSdk`, set `use_stripe_sdk=true`
         // to take advantage of new authentication features in mobile SDKs
-        use_stripe_sdk: useStripeSdk,
+        // use_stripe_sdk: useStripeSdk,
       });
+      console.log(intent)
+      
       // After create, if the PaymentIntent's status is succeeded, fulfill the order.
-    } else if (paymentIntentId) {
+    } else if (intent.id) {
       // Confirm the PaymentIntent to finalize payment after handling a required action
       // on the client.
-      intent = await stripe.paymentIntents.confirm(paymentIntentId);
+      intent = await stripe.paymentIntents.confirm(intent.id);
       // After confirm, if the PaymentIntent's status is succeeded, fulfill the order.
     }
     res.send(generateResponse(intent));
@@ -124,6 +128,8 @@ app.get('/api/users/:user_id/cart', cart.getCart)
 app.get('/api/users/:user_id/total', cart.total)
 app.post('/api/users/:user_id/cart', cart.addItem)
 app.delete('/api/users/:cart_id/cart', cart.removeItem)
+
+app.post('/api/charge', cart.charge)
 
 //stripe:
 app.post("/checkout", async (req, res) => {

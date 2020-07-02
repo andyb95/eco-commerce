@@ -7,13 +7,13 @@ import {updateUser} from './redux/userReducer'
 import './App.css';
 
 function App(props) {
-  useEffect(() => {
+  useEffect((e) => {
     axios.get('/auth/getUser')
     .then(res => {
       props.updateUser(res.data)
     })
     .catch(err => console.log(err))
-  })
+  }, [])
   return (
     <div className="App">
       <Nav />

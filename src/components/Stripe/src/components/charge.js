@@ -17,6 +17,9 @@ export default async (req, res) => {
       confirm: 'abc123'
     })
   } catch(error) {
-
+    console.log(error);
+    return res.status(400).json({
+      message: error.message
+    });
   }
 }
