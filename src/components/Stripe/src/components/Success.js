@@ -16,41 +16,7 @@ const Success = () => {
         </header>
         <div className="sr-payment-summary completed-view">
           <h1>Your payment succeeded</h1>
-          <h4>Checkout Session ID:</h4>
-        </div>
-        <div className="sr-section completed-view">
-          <div className="sr-callout">
-            <pre>{sessionId}</pre>
-          </div>
-          <Link to="/">Restart demo</Link>
-        </div>
-      </div>
-      <div className="sr-content">
-        <div className="pasha-image-stack">
-          <img
-            alt=""
-            src="https://picsum.photos/280/320?random=1"
-            width="140"
-            height="160"
-          />
-          <img
-            alt=""
-            src="https://picsum.photos/280/320?random=2"
-            width="140"
-            height="160"
-          />
-          <img
-            alt=""
-            src="https://picsum.photos/280/320?random=3"
-            width="140"
-            height="160"
-          />
-          <img
-            alt=""
-            src="https://picsum.photos/280/320?random=4"
-            width="140"
-            height="160"
-          />
+          {/* <h4>Checkout Session ID: {sessionId}</h4> */}
         </div>
       </div>
     </div>

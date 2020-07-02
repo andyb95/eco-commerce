@@ -13,8 +13,23 @@ class Checkout extends Component{
   constructor(props){
     super(props)
     this.state={
-      redirecting: false
+      redirecting: false,
+      total: []
     }
+  }
+
+  componentDidMount(){
+    this.getTotal()
+  }
+
+  getTotal = () => {
+    const {user_id} = this.props.userReducer
+    axios.get(`/api/users/${user_id}/total`)
+    .then(res => {
+      this.setState({total: res.data[0].sum})
+      console.log(this.state.total)
+    })
+    .catch(err => console.log(err))
   }
 
   CheckoutForm = () => {
@@ -48,7 +63,7 @@ class Checkout extends Component{
 
     return (
       <form onSubmit = {handleSubmit} style = {{maxWidth: '400px', margin: '0 auto'}}>
-        <h2>price: </h2>
+        <h2>Total: {this.state.total} </h2>
         <CardElement />
         <button type = 'submit' disabled = {!stripe}>
           Pay

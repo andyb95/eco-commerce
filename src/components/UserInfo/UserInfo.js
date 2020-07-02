@@ -65,7 +65,7 @@ class UserInfo extends Component{
             <h2 className = 'sub-t'>Email: </h2>
             <div className = 'info'>{email}</div>
             <h2 className = 'sub-t'>Password: </h2>
-            <div className = 'info'>{password}</div>
+            <div type = 'password' className = 'info'>{password}</div>
             <h2 className = 'sub-t'>Address: </h2>
             <div className = 'info'>{address}</div>
             <div className = 'info-buttons'>

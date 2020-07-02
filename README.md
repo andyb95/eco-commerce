@@ -237,7 +237,7 @@ Get 'api/products'
 
 **presentation = 10**
 
-- purpose: help people help the Earth!
+- purpose: To provide people with a simple store where they can purchase household goods that are more environmentally sustainable.
 - MVP: register/login, edit user info, buy product, clear cart
 - Review Stripe
 - Don't talk about what I haven't finished on it

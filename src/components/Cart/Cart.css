@@ -42,8 +42,10 @@ h3 {
   height: 50px;
   width: 100px;
   border-radius: 5px;
-  margin: 0 auto;
-  background-color: #317B22
+  background-color: #317B22;
+  position: absolute;
+  margin-right: 48%;
+  margin-left: 48%
 }
 
 .to-checkout{

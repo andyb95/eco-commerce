@@ -20,6 +20,11 @@ class Product extends Component {
     const {user_id} = this.props.userReducer
     axios.post(`/api/users/${user_id}/cart`, {product_id})
     // .then(this.props.getCart())
+  //   if (this.props.userReducer.email){
+  //     this.props.history.push('/cart')
+  //   } else {
+  //     this.props.history.push('/landing')
+  //   }
     alert(`${name} added to cart`)
   }
   

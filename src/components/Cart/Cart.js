@@ -78,7 +78,9 @@ class Cart extends Component{
               />
             })}
           <h1>Total: {this.state.total}</h1>
-          <Link to ='/checkout'>Checkout</Link>
+          <button className = 'checkout-button'>
+            <Link className = 'home-link-link' to ='/checkout'>Checkout</Link>
+          </button>
           {/* <StripeCheckout
             stripeKey="pk_test_4TbuO6qAW2XPuce1Q6ywrGP200NrDZ2233"
             token={this.handleToken}

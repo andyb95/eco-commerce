@@ -9,7 +9,7 @@
 
 
 .heading {
-  color: #67E596 !important;
+  color: rgb(0, 5, 3) !important;
   font-family: 'Anton', sans-serif;
   font-size: 2em;
   letter-spacing: 3px;
@@ -20,9 +20,10 @@
 
 p {
   font-family: 'Open Sans', 'Sans-Serif';
-  color: #7CF0BD;
-  font-size: 102%;
-  font-weight: bold;
+  color: black;
+  font-size: 1.5em;
+  font-family: 'Anton', sans-serif;
+  font-weight: bolder;
 }
 
 .slide {
@@ -159,11 +160,46 @@ button:focus {
 
 .home-box{
   box-sizing: content-box;
-  background-color: rgb(237, 237, 237);
+  background-color: white;
   height: 400px;
-  margin: 10px;
+  margin: 20px;
   box-shadow: 5px 7.5px rgb(183, 182, 182);
   border-radius: 2.5px;
+  position: relative;
+  display: flex;
+  flex-direction: column
+}
+
+
+.home-img{
+  height: 200px;
+  width: 80%;
+  position: absolute;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 25%
+}
+
+.home-link{
+  width: 80%;
+  position: absolute;
+  bottom: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 30px;
+  border: none;
+  background: #317B22;
+  color: #FFFFFF;
+  font-family:'Open Sans', 'Sans-Serif';
+  font-weight: bold;
+  font-size: 105%;
+  text-transform: uppercase;
+  padding: 6px 20px 6px 20px;
+}
+
+.home-link-link{
+  text-decoration: none;
+  color: white;
 }
 
 .sm{
