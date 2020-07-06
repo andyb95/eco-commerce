@@ -16,6 +16,7 @@ const cart = require('./cartController')
 
 const app = express()
 
+app.use(express.static(`${__dirname}/../build`))
 app.use(express.static(process.env.STATIC_DIR));
 app.get('/checkout', (req, res) => {
   const path = resolve(process.env.STATIC_DIR + '/index.html')
