@@ -217,22 +217,20 @@ Get 'api/products'
 
 **core = 40**
 
-- 3 pages with responsive views on 2 screen sizes; Home, dashboard , and Cart  = 15
+- 3 pages with responsive views on 2 screen sizes; Home, dashboard , and Cart  = 10
 - UserReducer = 10
-- figure out how to use react hooks on all components = 5
-  - start with landing and user info
+- Use hooks on 5 components (App, Landing, Dash, applianceDash, householdDash) = 10
 - authentication in Landing.js = 10
 
 
-**hosting = 15**
+**hosting = 10**
 
-- hosted, and registered under domain name = 15
+- hosted @ http://167.172.199.70:3278/  = 10
 
 
 **additional technology = 10**
 
-- I will research stripe and figure out how to implement it to take payment information = 10?
-- SASS ?
+- Stripe = 10
 
 
 **presentation = 10**
