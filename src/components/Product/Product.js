@@ -7,14 +7,7 @@ import { render } from '@testing-library/react'
 
 class Product extends Component {
 
-  constructor(props){
-    super(props)
-  }
-  // componentDidMount(){
-    
-  // }
 
-  
   addToCart = () => {
     const {product_id, name} = this.props.product
     const {user_id} = this.props.userReducer

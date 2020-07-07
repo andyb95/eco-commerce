@@ -5,26 +5,6 @@ import Carousel from './Carousel/Carousel'
 import './Home.css'
 
 export default class Home extends Component{
-  constructor(){
-    super()
-    this.state={
-      inventory:[]
-    }
-  }
-
-  // componentDidMount(){
-  //   this.getInventory()
-  // }
-
-  // getInventory = async () => {
-  //   const inventory = await axios.get('/api/products')
-  //   console.log(inventory)
-  //   this.setState({inventory: inventory})
-    
-
-  
-  //   // .catch(err => console.log(err))
-  // }
   
   render(){
     return(

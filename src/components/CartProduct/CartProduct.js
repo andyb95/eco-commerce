@@ -7,10 +7,6 @@ import { render } from '@testing-library/react'
 
 class CartProduct extends Component {
 
-  constructor(props){
-    super(props)
-  }
-
 
   removeCart = () => {
     const {cart_id} = this.props.product

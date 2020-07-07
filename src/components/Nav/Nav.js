@@ -11,21 +11,8 @@ import './Nav.css'
 
 
 class Nav extends Component{
-  // constructor(props){
-  //   super(props)
-  // }
-
-
-  // logout = () => {
-  //   axios.delete('auth/logout')
-  //   .then(res => {
-  //     this.props.logout(res.data)
-  //   })
-  // }
-
   
-  
-  
+
   render(){
     const {name} = this.props.userReducer
     const {email} = this.props.userReducer
@@ -53,24 +40,12 @@ class Nav extends Component{
             <Link className = 'hello' to = '/user'>Hello, {name}
             <p className = 'link'>Account</p>
             </Link>        
-            {/* <Link to = '/landing'>
-              <button 
-                className= 'nav-button logout'
-                onClick = {this.logout}>Logout
-                </button>
-              </Link>   */}
           </div>
           ): email ? (
             <div>
               <Link className = 'hello' to = '/user'>Hello, {email}
               <p className = 'link'>Account</p>
-              </Link>        
-              {/* <Link to = '/landing'>
-                <button 
-                  className= 'nav-button logout'
-                  onClick = {this.logout}>Logout
-                </button>
-              </Link> */}
+              </Link>
             </div>
             ):(
             <Link className = 'hello' to = '/landing'>Hello, Sign In</Link>

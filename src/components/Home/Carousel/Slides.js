@@ -17,12 +17,7 @@ export default [{
   img: 'https://www.rd.com/wp-content/uploads/2018/08/shutterstock_154702181-760x506.jpg'
 
 },
-// {
-//   title: 'Mobile enabled',
-//   description: 'Listen to your music on the go. This streaming service is available on all mobile platforms.',
-//   buttons: 'Listen Now',
-//   buttons2: ''
-// }
+
 
 
 ];
