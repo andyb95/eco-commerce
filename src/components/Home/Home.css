@@ -121,7 +121,7 @@ button:focus {
   height: 25px;
   width: 15px;
   position: absolute;
-  top: 50px;
+  top: 75px;
   background-color: #67E0A3;
   border-radius: 5px;
   z-index: 1;
@@ -152,17 +152,19 @@ button:focus {
   box-sizing: content-box;
   position: absolute;
   top: 250px;
-  width: 100vw;
+  width: 90vw;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin-right: 5vw;
+  margin-left: 5vw;
 }
 
 .home-box{
   box-sizing: content-box;
   background-color: white;
   height: 400px;
-  margin: 20px;
+  width: 25vw;
+  margin: 10px;
   box-shadow: 5px 7.5px rgb(183, 182, 182);
   border-radius: 2.5px;
   position: relative;
@@ -208,4 +210,25 @@ button:focus {
 
 .lg{
   width: 64vw;
+}
+
+@media(max-width:960px){
+  .home-boxes{
+    flex-wrap: wrap;
+  }
+
+  .home-box{
+    width: 40vw;
+  }
+}
+
+@media(max-width:700px){
+  .home-boxes{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-box{
+    width: 50vw;
+  }
 }

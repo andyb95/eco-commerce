@@ -49,3 +49,19 @@
   color: white;
   background-color: #317B22
 }
+
+@media(max-width: 700px){
+  .user-info{
+    width: 250px;
+  }
+
+  .info-buttons{
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+  }
+
+  .info-button{
+    margin-bottom: 15px;
+  }
+}
