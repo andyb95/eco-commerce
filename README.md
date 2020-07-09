@@ -217,7 +217,7 @@ Get 'api/products'
 
 **core = 40**
 
-- 3 pages with responsive views on 2 screen sizes; Home, dashboard , and Cart  = 10
+- 4 pages with responsive views on 2+ screen sizes; Home, dashboard, UserInfo, and Cart  = 10
 - UserReducer = 10
 - Use hooks on 5 components (App, Landing, Dash, applianceDash, householdDash) = 10
 - authentication in Landing.js = 10

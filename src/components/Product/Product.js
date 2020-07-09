@@ -2,8 +2,6 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import './Product.css'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import { render } from '@testing-library/react'
 
 class Product extends Component {
 
@@ -12,12 +10,6 @@ class Product extends Component {
     const {product_id, name} = this.props.product
     const {user_id} = this.props.userReducer
     axios.post(`/api/users/${user_id}/cart`, {product_id})
-    // .then(this.props.getCart())
-  //   if (this.props.userReducer.email){
-  //     this.props.history.push('/cart')
-  //   } else {
-  //     this.props.history.push('/landing')
-  //   }
     alert(`${name} added to cart`)
   }
   

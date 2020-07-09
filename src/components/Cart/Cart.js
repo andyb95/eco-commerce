@@ -1,16 +1,11 @@
 import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {toast} from 'react-toastify'
-import StripeCheckout from 'react-stripe-checkout'
 import CartProduct from '../CartProduct/CartProduct'
 
-import "react-toastify/dist/ReactToastify.css"
 import './Cart.css'
 
-toast.configure()
 
 class Cart extends Component{
   constructor(props){
@@ -45,28 +40,12 @@ class Cart extends Component{
     .catch(err => console.log(err))
   }
 
-  handleToken = async(token, addresses) => {
-    const {cart} = this.state.cart
-    const {price} = this.state.total
-    const response = await axios.post(
-      "https://ry7v05l6on.sse.codesandbox.io/checkout",
-      { token, cart, price }
-    );
-    const { status } = response.data;
-    console.log("Response:", response.data);
-    if (status === "success") {
-      toast("Success! Check email for details", { type: "success" });
-    } else {
-      toast("Something went wrong", { type: "error" });
-    }
-  }
-
   render(){
 
     return (
       <div className = 'cart'>
         {!this.state.cart[0] ? (
-          <h1>Fill your Cart and help save the Earth.</h1>
+          <h1>Sign in to fill your Cart and help save the Earth.</h1>
         ):(
           <div>
             {this.state.cart.map((e) => {
@@ -81,13 +60,6 @@ class Cart extends Component{
           <button className = 'checkout-button'>
             <Link className = 'home-link-link' to ='/checkout'>Checkout</Link>
           </button>
-          {/* <StripeCheckout
-            stripeKey="pk_test_4TbuO6qAW2XPuce1Q6ywrGP200NrDZ2233"
-            token={this.handleToken}
-            amount={this.state.total * 100}
-            billingAddress 
-            shippingAddress = {this.props.userReducer.address}
-            /> */}
           </div>
         )}
       </div>
