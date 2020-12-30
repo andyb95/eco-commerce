@@ -52,7 +52,8 @@ class Checkout extends Component{
         const {id} = paymentMethod
         try {
           console.log((amount.data[0].sum.replace(/[$,]+/g,"")*100).toFixed(0))
-          const {data} = await axios.post(`/pay/${id}/${(amount.data[0].sum.replace(/[$,]+/g,"")*100).toFixed(0)}`)
+          await axios.post(`/pay/${id}/${(amount.data[0].sum.replace(/[$,]+/g,"")*100).toFixed(0)}`)
+          // const {data} = await axios.post(`/pay/${id}/${(amount.data[0].sum.replace(/[$,]+/g,"")*100).toFixed(0)}`)
           this.setState({redirecting: true})          
           
         } catch (error){

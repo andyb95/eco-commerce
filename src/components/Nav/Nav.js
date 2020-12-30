@@ -5,7 +5,6 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 import {updateUser, logout} from './../../redux/userReducer'
-import axios from 'axios'
 import logo from '../../screenshots/eco-shop.png'
 import './Nav.css'
 
@@ -22,6 +21,7 @@ class Nav extends Component{
         <Link to = '/'>
             <img src = {logo}
             className= 'home-button'
+            alt='logo'
             />
         </Link>
 
@@ -31,7 +31,7 @@ class Nav extends Component{
             type = 'search'
           />
           <button className= 'search-button' >
-            <img className= 'search-icon' src ='https://www.pngmart.com/files/8/Search-Button-PNG-Image-Free-Download.png'/>
+            <img className= 'search-icon' src ='https://www.pngmart.com/files/8/Search-Button-PNG-Image-Free-Download.png' alt='searchIcon'/>
           </button>
         </div>
     
@@ -52,8 +52,11 @@ class Nav extends Component{
             )}
 
           <Link to = '/cart'>
-              <img className = 'cart-img' 
-              src = 'https://image.flaticon.com/icons/png/512/34/34627.png'/> 
+            <img 
+              className = 'cart-img' 
+              src = 'https://image.flaticon.com/icons/png/512/34/34627.png'
+              alt='cart'
+            /> 
             </Link>
       </div>
     )

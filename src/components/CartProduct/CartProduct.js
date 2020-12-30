@@ -3,7 +3,6 @@ import axios from 'axios'
 import '../Product/Product.css'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import { render } from '@testing-library/react'
 
 class CartProduct extends Component {
 
@@ -17,7 +16,7 @@ class CartProduct extends Component {
   }
   
   render(){
-    const {product_id, name, price, img} = this.props.product
+    const {name, price, img} = this.props.product
     return(
       <div className = 'product-container'>
         <img className = 'dash-img' src = {img} alt={name}/>

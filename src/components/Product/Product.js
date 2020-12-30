@@ -14,8 +14,7 @@ class Product extends Component {
   }
   
   render(){
-    const {product_id, name, price, img} = this.props.product
-    // const {addToCart} = props  
+    const { name, price, img } = this.props.product
     return(
       <div className = 'product-container'>
         <img className = 'dash-img' src = {img} alt={name}/>

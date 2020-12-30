@@ -13,7 +13,7 @@ function App(props) {
       props.updateUser(res.data)
     })
     .catch(err => console.log(err))
-  }, [])
+  }, [props])
   
   return (
     <div className="App">
