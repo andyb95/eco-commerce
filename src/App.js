@@ -7,12 +7,18 @@ import {updateUser} from './redux/userReducer'
 import './App.css';
 
 function App(props) {
+
   useEffect((e) => {
-    axios.get('/auth/getUser')
-    .then(res => {
-      props.updateUser(res.data)
-    })
-    .catch(err => console.log(err))
+    const getUser = () => {
+      axios.get('/auth/getUser')
+      .then(res => {
+          props.updateUser(res.data)
+      })
+      .catch(err => console.log(err))
+    }
+    if (props.userReducer.user_id) {
+      getUser()
+    }
   }, [props])
   
   return (
