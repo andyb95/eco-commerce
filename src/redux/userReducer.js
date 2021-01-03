@@ -3,7 +3,7 @@ const initialState = {
   name: '',
   email: '',
   password: '',
-  address: '',
+  address: ''
 }
 
 const UPDATE_USER = 'UPDATE_USER'

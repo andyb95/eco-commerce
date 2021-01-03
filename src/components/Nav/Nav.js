@@ -1,17 +1,15 @@
-//state: search
-//methods: handleChange, toggleSearch
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {updateUser, logout} from './../../redux/userReducer'
 import logo from '../../screenshots/eco-shop.png'
 import './Nav.css'
 
 const Nav = (props) => {
-  const {name, email} = props.userReducer
+  const { name, email } = props.userReducer
+  const { count } = props.cartReducer
+
   return(
     <div className= 'nav'>
-
       <Link to = '/'>
           <img src = {logo}
           className= 'home-button'
@@ -50,8 +48,11 @@ const Nav = (props) => {
             className = 'cart-img' 
             src = 'https://image.flaticon.com/icons/png/512/34/34627.png'
             alt='cart'
-          /> 
-          </Link>
+          />
+          {count > 0 ? (
+            <div className='count'>{count}</div>
+          ) : null}
+        </Link>
     </div>
   )
 }
@@ -60,4 +61,4 @@ function mapStateToProps(state){
   return state
 }
  
-export default connect(mapStateToProps, {updateUser, logout})(Nav)
+export default connect(mapStateToProps)(Nav)

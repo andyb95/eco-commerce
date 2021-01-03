@@ -97,6 +97,21 @@
   border-radius: 5px;
 }
 
+.count{
+  color: black;
+  width: 20px;
+  height: 20px;
+  background-color: #7CF0BD;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 25px;
+  top: 15px;
+  font-size: small;
+}
+
 .cart-img:hover{
   border-color: white;
 }
