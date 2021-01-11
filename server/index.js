@@ -48,9 +48,11 @@ app.get('/api/products/:name', product.getName)
 app.get('/api/users/:user_id/cart', cart.getCart)
 app.get('/api/users/:user_id/total', cart.total)
 app.post('/api/users/:user_id/cart', cart.addItem)
-app.delete('/api/users/:cart_id/cart', cart.removeItem)
+app.delete('/api/users/:cart_id/:user_id/cart', cart.removeItem)
 
+//checkout
 app.post('/api/charge', cart.charge)
+app.post('/api/order', cart.order)
 
 //stripe:
 app.post("/checkout", async (req, res) => {

@@ -37,7 +37,7 @@ const Cart = ({ userReducer }) => {
 
   return (
     <div className = 'cart'>
-      {cart[0] ? (
+      { cart[0] ? (
         <div>
           {cart.map((e) => {
             return (
@@ -53,9 +53,11 @@ const Cart = ({ userReducer }) => {
           <Link className = 'home-link-link' to ='/checkout'>Checkout</Link>
         </button>
         </div>
-      ) : (
+      ) : !user_id ? (
         <h1>Sign in to fill your cart</h1>
-      )}
+      ) : cartRetrieved && !cart[0] ? (
+        <h1>No items in cart</h1>
+      ) : null }
     </div>
   )
 }

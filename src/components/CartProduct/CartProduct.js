@@ -6,17 +6,18 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const CartProduct = ({
+  userReducer,
   updateCart,
-  cartReducer,
   product,
   setCartRetrieved
 }) => {
   const { name, price, img, cart_id } = product
+  const { user_id } = userReducer
 
   const removeCart = () => {
     try {
-      axios.delete(`/api/users/${cart_id}/cart`)
-        .then(res => updateCart(cartReducer.count-1))
+      axios.delete(`/api/users/${cart_id}/${user_id}/cart`)
+        .then(res => updateCart(res.data))
         .then(setCartRetrieved(false))
         .catch(e => console.error(e))
     } catch (e) {

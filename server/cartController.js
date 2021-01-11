@@ -1,16 +1,12 @@
-
-
 module.exports = {
-
-  
 
   getCart: async (req, res) => {
     const {user_id} = req.params
     const db = req.app.get('db')
 
     const cart = await db.get_cart(user_id)
-    if (!cart.length){
-      res.status(200).send("Cart is Empty")
+    if (!cart[0]){
+      res.status(200).send([])
     } else {
       res.status(200).send(cart)
     } 
@@ -22,20 +18,20 @@ module.exports = {
     const db = req.app.get('db')
 
     try{
-      const newItem = await db.add_to_cart([user_id, product_id])
-      res.status(200).send(newItem)
+      const updatedCart = await db.add_to_cart([user_id, product_id])
+      res.status(200).send(updatedCart)
     } catch {
       res.status(500).send("Couldn't Add to Cart")
     }
   },
 
   removeItem: async (req, res) => {
-    const {cart_id} = req.params
+    const {cart_id, user_id} = req.params
     const db = req.app.get('db')
 
     try{
-      await db.remove_from_cart(cart_id)
-      res.status(200).send('Deleted')
+      const updatedCart = await db.remove_from_cart(cart_id, user_id)
+      res.status(200).send(updatedCart)
     } catch {
       res.status(500).send("Couldn't Delete From Cart")
     }
@@ -73,6 +69,18 @@ module.exports = {
     } catch (error) {
       res.status(404).send("Couldn't charge")
     }
-  }
+  },
 
+  order: async (req, res) => {
+    const { user_id, product_id, order_date } = req.body
+    const db = req.app.get('db')
+
+    try {
+      const order = await db.add_order(user_id, product_id, order_date)
+      res.status(200).send(order)
+    } catch (e) {
+      res.status(500).send('Order history not updated')
+
+    }
+  }
 }

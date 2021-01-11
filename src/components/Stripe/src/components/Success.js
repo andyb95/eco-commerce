@@ -1,13 +1,10 @@
 import React from 'react';
-// import { useLocation } from 'react-router-dom';
-
-// import '../css/global.css'
-// import '../css/normalize.css'
+import { useLocation } from 'react-router-dom';
 
 const Success = () => {
-  // const location = useLocation();
-  // const sessionId = location.search.replace('?session_id=', '');
-
+  const location = useLocation();
+  const sessionId = location.search.replace('?session_id=', '');
+  console.log(sessionId)
   return (
     <div className="sr-root">
       <div className="sr-main">

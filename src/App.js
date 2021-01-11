@@ -21,7 +21,7 @@ function App(props) {
     const getCart = async (id) => {
       await axios.get(`/api/users/${id}/cart`)
       .then(res => {
-        props.updateCart(res.data.length)
+        props.updateCart(res.data)
       })
       .catch(e => console.error(e))
       setUserRetrieved(true)

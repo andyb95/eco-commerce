@@ -2,6 +2,7 @@ drop table if exists cart;
 drop table if exists photos;
 drop table if exists products;
 drop table if exists users;
+drop table if exists orders;
 
 create table users (
   user_id serial primary key,
@@ -33,5 +34,9 @@ create table photos (
   extra_img varchar(3000)
 );
 
-
-
+create table orders (
+  order_id serial primary key,
+  user_id int references users(user_id),
+  product_id int references products(product_id),
+  order_date datetime
+);

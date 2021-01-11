@@ -6,7 +6,7 @@ import './Nav.css'
 
 const Nav = (props) => {
   const { name, email } = props.userReducer
-  const { count } = props.cartReducer
+  const { products } = props.cartReducer
 
   return(
     <div className= 'nav'>
@@ -49,8 +49,8 @@ const Nav = (props) => {
             src = 'https://image.flaticon.com/icons/png/512/34/34627.png'
             alt='cart'
           />
-          {count > 0 ? (
-            <div className='count'>{count}</div>
+          {products[0] ? (
+            <div className='count'>{products.length}</div>
           ) : null}
         </Link>
     </div>

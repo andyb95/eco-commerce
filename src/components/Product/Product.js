@@ -10,9 +10,10 @@ const Product = props => {
   const addToCart = () => {
     const {product_id, name} = props.product
     const {user_id} = props.userReducer
-    const { count } = props.cartReducer
     axios.post(`/api/users/${user_id}/cart`, {product_id})
-      .then(res => props.updateCart(count + res.data.length))
+      .then(res => {
+        props.updateCart(res.data)
+      })
       .catch(e => console.error(e))
     alert(`${name} added to cart`)
   }
