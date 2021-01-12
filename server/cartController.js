@@ -72,11 +72,11 @@ module.exports = {
   },
 
   order: async (req, res) => {
-    const { user_id, product_id, order_date } = req.body
+    const { user_id, product_id, orderDate, cart_id } = req.body
     const db = req.app.get('db')
 
     try {
-      const order = await db.add_order(user_id, product_id, order_date)
+      const order = await db.add_order(user_id, product_id, orderDate, cart_id)
       res.status(200).send(order)
     } catch (e) {
       res.status(500).send('Order history not updated')

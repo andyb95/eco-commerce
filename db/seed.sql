@@ -38,5 +38,5 @@ create table orders (
   order_id serial primary key,
   user_id int references users(user_id),
   product_id int references products(product_id),
-  order_date datetime
+  order_date bigint
 );
