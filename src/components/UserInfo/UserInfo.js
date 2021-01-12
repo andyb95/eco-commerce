@@ -14,7 +14,7 @@ class UserInfo extends Component{
       user_id: this.props.userReducer.user_id,
       name: this.props.userReducer.name,
       email: this.props.userReducer.email,
-      password: this.props.userReducer.password,
+      password: null,
       address: this.props.userReducer.address
     }
   }
@@ -66,7 +66,7 @@ class UserInfo extends Component{
             <h2 className = 'sub-t'>Email: </h2>
             <div className = 'info'>{email}</div>
             <h2 className = 'sub-t'>Password: </h2>
-            <div type = 'password' className = 'info'>{password}</div>
+            <div type = 'password' className = 'info'>*****</div>
             <h2 className = 'sub-t'>Address: </h2>
             <div className = 'info'>{address}</div>
             <div className = 'info-buttons'>

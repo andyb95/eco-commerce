@@ -11,6 +11,18 @@ module.exports = {
       res.status(500).send("Couldn't get inventory")
     }
   },
+
+  getProduct: async(req, res) => {
+    const { product_id } = req.params
+    const db = req.app.get('db')
+    try {
+      const product = await db.get_product(product_id)
+      res.status(200).send(product)
+    } catch (e) {
+      console.error(e)
+      res.status(400).send("Couldn't find product")
+    }
+  },
   
   getCategory: async(req, res) => {
     const {category} = req.params
@@ -33,6 +45,18 @@ module.exports = {
       res.status(200).send(product)
     } catch {
       res.status(404).send("Couldn't find products")
+    }
+  },
+
+  getOrderHistory: async(req, res) => {
+    const { user_id } = req.params
+    const db = req.app.get('db')
+
+    try {
+      const orderHistory = await db.get_order_history(user_id)
+      res.status(200).send(orderHistory)
+    } catch {
+      res.status(400).send("Couldn't Find Order History")
     }
   },
 

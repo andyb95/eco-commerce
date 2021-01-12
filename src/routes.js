@@ -10,6 +10,7 @@ import applianceDash from './components/Dash/applianceDash'
 import Checkout from './components/Stripe/src/components/Checkout'
 import Success from './components/Stripe/src/components/Success'
 import Canceled from './components/Stripe/src/components/Canceled'
+import OrderHistory from './components/OrderHistory/OrderHistory'
 
 export default (
   <Switch>
@@ -20,6 +21,7 @@ export default (
     <Route path = "/dash" component = {Dash}/>
     <Route path = "/houseDash" component = {houseDash}/>
     <Route path = "/applianceDash" component = {applianceDash}/>
+    <Route path = "/orderHistory" component = {OrderHistory}/>
     <Route path = '/checkout' >
       < Checkout/>
     </Route>
