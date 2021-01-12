@@ -36,9 +36,11 @@ app.get('/auth/getUser', auth.getUser)
 
 //product:
 app.get('/api/products', product.getInventory)
+app.get('/api/product/:product_id', product.getProduct)
 app.post('/api/product', product.addProduct)
 app.get('/api/products/:category', product.getCategory)
 app.get('/api/products/:name', product.getName)
+app.get('/api/orderHistory/:user_id', product.getOrderHistory)
 // app.post('/api/photo/:product_id', product.addPhoto)
 // app.put('/api/product/:product_id', product.editProduct)
 // app.delete('/api/product/:product_id', product.deleteProduct)
@@ -48,9 +50,11 @@ app.get('/api/products/:name', product.getName)
 app.get('/api/users/:user_id/cart', cart.getCart)
 app.get('/api/users/:user_id/total', cart.total)
 app.post('/api/users/:user_id/cart', cart.addItem)
-app.delete('/api/users/:cart_id/cart', cart.removeItem)
+app.delete('/api/users/:cart_id/:user_id/cart', cart.removeItem)
 
+//checkout
 app.post('/api/charge', cart.charge)
+app.post('/api/order', cart.order)
 
 //stripe:
 app.post("/checkout", async (req, res) => {

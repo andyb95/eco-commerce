@@ -1,13 +1,13 @@
 const initialState = {
-  count: 0
+  products: []
 }
 
 const UPDATE_COUNT = 'UPDATE_COUNT'
 
-export function updateCart(count) {
+export function updateCart(cart) {
   return {
     type: UPDATE_COUNT,
-    payload: count
+    payload: cart
   }
 }
 
@@ -16,7 +16,7 @@ export default function (state = initialState, action) {
   switch (type) {
     case UPDATE_COUNT:
       return { ...state,
-        count: payload
+        products: payload
       }
     default:
       return state

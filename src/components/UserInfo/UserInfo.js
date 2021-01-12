@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
-
+import { updateCart } from './../../redux/cartReducer'
 import {updateUser, logout} from './../../redux/userReducer'
 import axios from 'axios'
 import './UserInfo.css'
@@ -14,7 +14,7 @@ class UserInfo extends Component{
       user_id: this.props.userReducer.user_id,
       name: this.props.userReducer.name,
       email: this.props.userReducer.email,
-      password: this.props.userReducer.password,
+      password: null,
       address: this.props.userReducer.address
     }
   }
@@ -50,6 +50,7 @@ class UserInfo extends Component{
     axios.delete('auth/logout')
     .then(res => {
       this.props.logout(res.data)
+      this.props.updateCart([])
     })
   }
 
@@ -65,7 +66,7 @@ class UserInfo extends Component{
             <h2 className = 'sub-t'>Email: </h2>
             <div className = 'info'>{email}</div>
             <h2 className = 'sub-t'>Password: </h2>
-            <div type = 'password' className = 'info'>{password}</div>
+            <div type = 'password' className = 'info'>*****</div>
             <h2 className = 'sub-t'>Address: </h2>
             <div className = 'info'>{address}</div>
             <div className = 'info-buttons'>
@@ -132,4 +133,4 @@ function mapStateToProps (state){
   return state
 }
 
-export default connect(mapStateToProps, {updateUser, logout})(UserInfo)
+export default connect(mapStateToProps, {updateUser, updateCart, logout})(UserInfo)

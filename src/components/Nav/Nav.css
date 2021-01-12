@@ -64,10 +64,22 @@
   height: 45px;
   text-decoration: none;
   color: white;
-  display: flex;
-  flex-direction: column;
   position: relative;
-  top: 0px;
+  bottom: 10px;
+  border-radius: 5px;
+}
+
+.orderHistory{
+  padding: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #317B22;
+  height: 45px;
+  text-decoration: none;
+  color: white;
+  position: relative;
+  left: 125px;
+  bottom: 30px;
   border-radius: 5px;
 }
 

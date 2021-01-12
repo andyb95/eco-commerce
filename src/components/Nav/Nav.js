@@ -6,19 +6,18 @@ import './Nav.css'
 
 const Nav = (props) => {
   const { name, email } = props.userReducer
-  const { count } = props.cartReducer
+  const { products } = props.cartReducer
 
   return(
     <div className= 'nav'>
       <Link to = '/'>
-          <img src = {logo}
+        <img src = {logo}
           className= 'home-button'
           alt='logo'
-          />
+        />
       </Link>
-
       <div className = 'search-bar'>
-       <input
+        <input
           className = 'input'
           type = 'search'
         />
@@ -29,30 +28,35 @@ const Nav = (props) => {
   
       {name ? (
         <div>
-          <Link className = 'hello' to = '/user'>Hello, {name}
-          <p className = 'link'>Account</p>
-          </Link>        
+          <Link className='hello' to='/user'>Hello, {name}
+            <p className='link'>Account</p>
+          </Link>
+          <Link className='orderHistory' to='/orderHistory'>
+            <p className='link'>Order History</p>
+          </Link>
         </div>
-        ): email ? (
-          <div>
-            <Link className = 'hello' to = '/user'>Hello, {email}
+      ) : email ? (
+        <div>
+          <Link className = 'hello' to = '/user'>Hello, {email}
             <p className = 'link'>Account</p>
-            </Link>
-          </div>
-          ):(
-          <Link className = 'hello' to = '/landing'>Hello, Sign In</Link>
-          )}
-
-        <Link to = '/cart'>
-          <img 
-            className = 'cart-img' 
-            src = 'https://image.flaticon.com/icons/png/512/34/34627.png'
-            alt='cart'
-          />
-          {count > 0 ? (
-            <div className='count'>{count}</div>
-          ) : null}
-        </Link>
+          </Link>
+          <Link className='orderHistory' to='/orderHistory'>
+            <p className='link'>Order History</p>
+          </Link>
+        </div>
+      ):(
+        <Link className = 'hello' to = '/landing'>Hello, Sign In</Link>
+      )}
+      <Link to = '/cart'>
+        <img 
+          className = 'cart-img' 
+          src = 'https://image.flaticon.com/icons/png/512/34/34627.png'
+          alt='cart'
+        />
+        {products[0] ? (
+          <div className='count'>{products.length}</div>
+        ) : null}
+      </Link>
     </div>
   )
 }

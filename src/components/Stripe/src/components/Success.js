@@ -1,12 +1,12 @@
-import React from 'react';
-// import { useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { updateCart } from '../../../../redux/cartReducer'
+import { connect } from 'react-redux'
 
-// import '../css/global.css'
-// import '../css/normalize.css'
+const Success = ({ updateCart }) => {
 
-const Success = () => {
-  // const location = useLocation();
-  // const sessionId = location.search.replace('?session_id=', '');
+  useEffect(() => {
+    updateCart([])
+  },[updateCart])
 
   return (
     <div className="sr-root">
@@ -16,11 +16,14 @@ const Success = () => {
         </header>
         <div className="sr-payment-summary completed-view">
           <h1>Your payment succeeded</h1>
-          {/* <h4>Checkout Session ID: {sessionId}</h4> */}
         </div>
       </div>
     </div>
   );
 };
 
-export default Success;
+function mapStateToProps(state){
+  return state
+}
+
+export default connect(mapStateToProps, { updateCart })(Success)

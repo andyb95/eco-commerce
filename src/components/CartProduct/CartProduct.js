@@ -1,46 +1,53 @@
-import React, {Component} from 'react'
+import React from 'react'
 import axios from 'axios'
 import '../Product/Product.css'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import { updateCart } from '../../redux/cartReducer'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-class CartProduct extends Component {
+const CartProduct = ({
+  userReducer,
+  updateCart,
+  product,
+  setCartRetrieved
+}) => {
+  const { name, price, img, cart_id } = product
+  const { user_id } = userReducer
 
-
-  removeCart = () => {
-    const {cart_id} = this.props.product
-    
-    axios.delete(`/api/users/${cart_id}/cart`)
-    this.props.getCart()
-    this.props.getTotal()
+  const removeCart = () => {
+    try {
+      axios.delete(`/api/users/${cart_id}/${user_id}/cart`)
+        .then(res => updateCart(res.data))
+        .then(setCartRetrieved(false))
+        .catch(e => console.error(e))
+    } catch (e) {
+      console.error(e)
+    }
   }
   
-  render(){
-    const {name, price, img} = this.props.product
-    return(
-      <div className = 'product-container'>
-        <img className = 'dash-img' src = {img} alt={name}/>
-        <div className ='dash-specs'>
-          <h1>{name}</h1>
-          <h2>{price}</h2>
-        </div>
-        <div className = 'buy-buttons'>
-          <button className = 'buy-button'>Buy Now</button>
-          <button 
-            className = 'buy-button'
-            onClick = {() => this.removeCart()}
-          >
-            <Link className = 'delete-item' to ='/cart'>Delete</Link>
-          </button>
-          
-        </div>
+  return(
+    <div className = 'product-container'>
+      <img className = 'dash-img' src = {img} alt={name}/>
+      <div className ='dash-specs'>
+        <h1>{name}</h1>
+        <h2>{price}</h2>
       </div>
-    )
-  }
+      <div className = 'buy-buttons'>
+        <button className = 'buy-button'>Buy Now</button>
+        <button 
+          className = 'buy-button'
+          onClick = {() => removeCart()}
+        >
+          <Link className = 'delete-item' to ='/cart'>Remove</Link>
+        </button>
+        
+      </div>
+    </div>
+  )
 }
 
 const mapStateToProps = state => {
   return state
 }
 
-export default connect(mapStateToProps)(CartProduct)
+export default connect(mapStateToProps, { updateCart })(CartProduct)
